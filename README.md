@@ -1,11 +1,64 @@
-## Installtion
+![](https://cdn.auth0.com/resources/oss-source-large-2x.png)
+
+## Pre-Requisites for Development
+
+### Node Version
+
+We are targeting node version 4.8.0.  Before installing dependencies you should use NVM to change versions of node by running the command below:
+
+```
+nvm use 4.8.0
+```
+
+### Installing Yarn
+
+ALso, for running scripts and installing dependencies this project utilizes yarn.  Please install yarn using brew so that it utilizes NVM.
+
+```
+brew install yarn --ignore-dependencies
+```
+
+### Installing Dependencies
 
 ```
 yarn install
 ```
 
-## Build
+### Building
+
+To build a minified and non-minified version of the library run the following command:
 
 ```
 yarn run build
 ```
+
+Also, you can use `build:dev` or `build:dist` to generate non-minified or minified bundles explicitly.
+
+
+## What is Auth0?
+
+Auth0 helps you to:
+
+* Add authentication with [multiple authentication sources](https://docs.auth0.com/identityproviders), either social like **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce, amont others**, or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS or any SAML Identity Provider**.
+* Add authentication through more traditional **[username/password databases](https://docs.auth0.com/mysql-connection-tutorial)**.
+* Add support for **[linking different user accounts](https://docs.auth0.com/link-accounts)** with the same user.
+* Support for generating signed [Json Web Tokens](https://docs.auth0.com/jwt) to call your APIs and **flow the user identity** securely.
+* Analytics of how, when and where users are logging in.
+* Pull data from other sources and add it to the user profile, through [JavaScript rules](https://docs.auth0.com/rules).
+
+## Create a free Auth0 account
+
+1. Go to [Auth0](https://auth0.com/signup) and click Sign Up.
+2. Use Google, GitHub or Microsoft Account to login.
+
+## Issue Reporting
+
+If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+
+## Author
+
+[Auth0](auth0.com)
+
+## License
+
+This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
