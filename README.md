@@ -1,5 +1,16 @@
 ![](https://cdn.auth0.com/resources/oss-source-large-2x.png)
 
+##
+
+If you are using this in a web browser be sure to include Auth0.js:
+
+```
+<!-- Latest patch release (recommended for production) -->
+<script src="http://cdn.auth0.com/js/auth0/8.8.0/auth0.min.js"></script>
+```
+
+Otherwise, if you are using this with NPM all the dependencies will be available as expected.
+
 ## Pre-Requisites for Development
 
 ### Node Version

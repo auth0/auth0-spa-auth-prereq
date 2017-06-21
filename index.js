@@ -1,5 +1,7 @@
 import auth0 from 'auth0-js';
 
+// Generates a fake guid: https://stackoverflow.com/a/105074/97275
+// This is not a UUID v1 or v4 it simply looks like one on the surface.
 const getRandom = () => {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
