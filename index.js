@@ -1,10 +1,18 @@
-import uuid from 'uuid';
 import auth0 from 'auth0-js';
-import moment from 'moment';
+
+const getRandom = () => {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
 
 const getNonce = (returnTo) => {
   const auth = (localStorage.auth && JSON.parse(localStorage.auth)) || {};
-  auth.nonce = uuid.v4();
+  auth.nonce = getRandom();
   auth.returnTo = returnTo;
   localStorage.auth = JSON.stringify(auth);
   return auth.nonce;
@@ -56,7 +64,8 @@ const renewAuth = (webAuth, cb) => {
 
 const bootstrapAuth = (options, cb) => {
   // Check local session, if it exists, check expiration, if both are good, you are logged in already
-  if (localStorage.tokens && localStorage.tokens.expiresAt < moment.unix()) {
+  var unixEpoch = Math.floor((new Date).getTime() / 1000)
+  if (localStorage.tokens && localStorage.tokens.expiresAt < unixEpoch) {
     return cb(null, localStorage.tokens);
   }
 
