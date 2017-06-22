@@ -1,20 +1,25 @@
 import auth0 from 'auth0-js';
 
-// Generates a fake guid: https://stackoverflow.com/a/105074/97275
-// This is not a UUID v1 or v4 it simply looks like one on the surface.
-const getRandom = () => {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
+const generateRandomNonceString = (length) => {
+  const bytes = new Uint8Array(length);
+  const result = [];
+  const charset = '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._~';
+  const cryptoObj = window.crypto || window.msCrypto;
+
+  if (!cryptoObj) { return null; }
+
+  const random = cryptoObj.getRandomValues(bytes);
+  for (var a = 0; a < random.length; a++) {
+    result.push(charset[random[a] % charset.length]);
   }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
+
+  return result.join('');
 }
+
 
 const getNonce = (returnTo) => {
   const auth = (localStorage.auth && JSON.parse(localStorage.auth)) || {};
-  auth.nonce = getRandom();
+  auth.nonce = generateRandomNonceString(32);
   auth.returnTo = returnTo;
   localStorage.auth = JSON.stringify(auth);
   return auth.nonce;
